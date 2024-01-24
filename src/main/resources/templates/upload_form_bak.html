@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>이미지 업로드</title>
+    <style>
+         h1 {
+          margin-bottom: 40px; /* 원하는 만큼의 여백을 추가하세요 */
+          font-family: 'Roboto', sans-serif;
+          text-align: center;
+          font-size: 50px;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* 배경 색상 코드를 입력하세요. */
+        }
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <h1>웹페이지 이름</h1>
+    <!-- 이미지 표시 -->
+    <img th:src="@{${generatorImage.imageUrl}}" alt="Uploaded Image" style="max-width: 100%;">
+    <!-- 이미지 업로드 폼 -->
+    <form method="post" action="/image/upload" enctype="multipart/form-data">
+        <input type="file" name="imageFile" multiple="multiple">
+        <input type="submit" value="이미지 업로드">
+    </form>
+    <p>변경하고 싶은 이미지를 업로드해주세요.</p>
+</div>
+</body>
+</html>

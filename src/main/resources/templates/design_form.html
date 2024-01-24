@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Image List</title>
+</head>
+<body>
+<h1>Image List</h1>
+    <a th:href="@{/image/upload}" class="btn btn-secondary">새 이미지 등록하기</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>File Name</th>
+        <th>File Path</th>
+        <th>Image</th>
+    </tr>
+    <tr th:each="image : ${images}">
+        <td th:text="${image.id}"></td>
+        <td th:text="${image.fileName}"></td>
+        <td th:text="${image.filePath}"></td>
+        <td><img th:src="@{${image.imageUrl}}" width="100px"></td>
+        <td>
+            <div th:each="imageProcess : ${imageProcesses}" th:unless="${imageProcess.id != image.id}">
+                <img th:src="@{${imageProcess.imageUrl}}" width="100px">
+            </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

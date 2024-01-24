@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FusionCanvas</title>
+    <script>
+    // h1 클릭 시 이벤트 처리
+    document.addEventListener('DOMContentLoaded', function() {
+      const h1Element = document.querySelector('h1');
+      h1Element.addEventListener('click', function() {
+        window.location.href = 'http://127.0.0.1:8080/text/input'; // 첫 페이지의 URL로 변경해주세요.
+      });
+    });
+  </script>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=EB+Garamond:wght@500&family=Orbit&display=swap');
+         h1 {
+           margin-bottom: 40px; /* 원하는 만큼의 여백을 추가하세요 */
+          font-family: 'Cinzel', serif;
+          text-align: center;
+          font-size: 60px;
+        }
+        body {
+            font-family: 'Orbit', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* 배경 색상 코드를 입력하세요. */
+        }
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <h1>FusionCanvas</h1>
+    <!-- 이미지 표시 -->
+    <img th:src="@{${generatorImage.imageUrl}}" alt="Uploaded Image" style="max-width: 100%;">
+    <!-- 이미지 업로드 폼 -->
+    <form method="post" action="/image/upload" enctype="multipart/form-data">
+        <input type="file" name="imageFile" multiple="multiple">
+        <input type="submit" value="이미지 업로드">
+    </form>
+    <p>변경하고 싶은 이미지를 업로드 하세요.</p>
+</div>
+</body>
+</html>

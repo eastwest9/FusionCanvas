@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:font-size="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>FusionCanvas</title>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const h1Element = document.querySelector('h1');
+      h1Element.addEventListener('click', function() {
+        window.location.href = 'http://127.0.0.1:8080/text/input';
+      });
+    });
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=EB+Garamond:wght@500&family=Orbit&display=swap');
+     h1 {
+      margin-bottom: 40px; /* 원하는 만큼의 여백을 추가하세요 */
+      font-family: 'Cinzel', serif;
+      text-align: center;
+      font-size: 60px;
+    }
+    body {
+      font-family: 'EB Garamond', serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background-color: #f0f0f0; /* 배경 색상 코드를 입력하세요. */
+    }
+     p {
+      font-family: 'Orbit', sans-serif;
+      font-size: 20px;
+      text-align: center;
+    }
+
+    form {
+      text-align: center;
+    }
+
+    input[type="text"] {
+      width: 400px; /* 입력 칸의 너비를 조절합니다. */
+      font-size: 15px; /* 입력된 텍스트의 크기를 조절합니다. */
+      padding: 10px; /* 입력 칸 내부 여백을 추가합니다. */
+      margin-bottom: 20px; /* 아래 여백을 추가합니다. */
+    }
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* 수직으로 가운데 정렬 */
+      text-align: center; /* 텍스트를 수평으로 가운데 정렬 */
+    }
+
+    .container img {
+      width: 256px;
+      height: 256px;
+      margin-bottom: -10px; /* 이미지 아래에 일정한 간격을 주기 위해 */
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* 4개의 열을 가진 그리드 */
+      gap: 20px; /* 이미지 간격 */
+      justify-items: center; /* 가로 가운데 정렬 */
+    }
+
+    .image-grid img {
+      display: block;
+      border-radius: 10px; /* 모서리를 둥글게 조정합니다. */
+    }
+     .image-grid .container p {
+      font-family: 'EB Garamond', serif;
+      font-size: 18px; /* 원하는 크기로 조절 */
+    }
+    button {
+      width: 120px; /* 버튼의 너비를 조절합니다. */
+      height: 35px; /* 버튼의 높이를 조절합니다. */
+      font-size: 15px; /* 버튼의 텍스트 크기를 조절합니다. */
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>FusionCanvas</h1>
+
+  <p>이미지를 생성하려면 아래 입력 상자에 단어를 입력하세요.</p>
+
+  <form method="post" th:action="@{/text/input}">
+    <input type="text" name="text" placeholder="단어 입력" th:value="${textForm.text}">
+    <button type="submit">이미지 생성</button>
+  </form>
+
+  <p>이미지를 생성시 3~5분이 소요됩니다.</p>
+  <p>영어로 기입하면 더 정확한 이미지를 생성할 수 있습니다.</p>
+
+  <div class="image-grid">
+    <div class="container">
+      <img src="/image/data/1.png" alt="New York City on a Rainy Day" width="256" height="256">
+      <p>New York City on a Rainy Day</p>
+    </div>
+
+    <div class="container">
+      <img src="/image/data/2.png" alt="Dreamy Milky Way" width="256" height="256">
+      <p>Dreamy Milky Way</p>
+    </div>
+
+    <div class="container">
+      <img src="/image/data/3.png" alt="Eiffel tower Floating on the Clouds" width="256" height="256">
+      <p>Eiffel tower Floating on the Clouds</p>
+    </div>
+
+    <div class="container">
+      <img src="/image/data/4.png" alt="Double Rainbow Over a Lake" width="256" height="256">
+      <p>Double Rainbow Over a Lake</p>
+    </div>
+
+    <div class="container">
+      <img src="/image/data/5.png" alt="aerial view of the beach at night" width="256" height="256">
+      <p>Aerial View of the Beach at Night</p>
+    </div>
+
+    <div class="container">
+      <img src="/image/data/6.png" alt="snow covered mountain" width="256" height="256">
+      <p>Snow Covered Mountain</p>
+    </div>
+
+    <div class="container">
+      <img src="/image/data/7.png" alt="Painting of an Organic Forest" width="256" height="256">
+      <p>Painting of an Organic Forest</p>
+    </div>
+
+    <div class="container">
+      <img src="/image/data/8.png" alt="Beautiful Sunset at a Beach" width="256" height="256">
+      <p>Beautiful Sunset at a Beach</p>
+    </div>
+  </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>FusionCanvas</title>
+
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=EB+Garamond:wght@500&family=Orbit&display=swap');
+        h1 {
+          margin-bottom: 40px; /* 원하는 만큼의 여백을 추가하세요 */
+          font-family: 'Cinzel', serif;
+          text-align: center;
+          font-size: 60px;
+        }
+        body {
+            font-family: 'Orbit', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* 배경 색상 코드를 입력하세요. */
+        }
+        div {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #displayedImage {
+            max-width: 100%;
+            margin-bottom: 10px; /* 이미지와 버튼 사이의 간격 조정 */
+        }
+        /* 수정된 스타일 */
+        .button-container {
+            display: flex;
+            flex-direction: row; /* 가로로 배치 */
+            gap: 10px; /* 버튼 간격 설정 */
+        }
+        .button-container button {
+            /* 원하는 버튼 스타일링 추가 */
+        }
+    </style>
+</head>
+<body>
+<div>
+    <h1>FusionCanvas</h1>
+    <!-- 이미지 표시 -->
+    <img id="displayedImage" th:src="@{${imageProcess.imageUrl}}" alt="Uploaded Image" style="max-width: 100%">
+
+    <!-- 버튼들을 담는 컨테이너 -->
+    <div class="button-container">
+        <!-- 이미지 저장 버튼 -->
+        <button onclick="downloadImage()">이미지 저장</button>
+        <!-- 되돌아가기 및 첫 페이지로 버튼 -->
+        <button onclick="goBack()">이미지 선택하기</button>
+        <button onclick="goToHomePage()">첫 페이지로</button>
+    </div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const h1Element = document.querySelector('h1');
+      h1Element.addEventListener('click', function() {
+        window.location.href = 'http://127.0.0.1:8080/text/input';
+      });
+    });
+    function downloadImage() {
+        var imgSrc = document.getElementById('displayedImage').getAttribute('src');
+        var link = document.createElement('a');
+        link.href = imgSrc;
+        link.download = 'downloaded_image.png';
+        link.click();
+    }
+    function goBack() {
+        var apiEndpoint = 'http:127.0.0.1:8080/generatorImage/save';
+        window.history.back(); // 브라우저 히스토리에서 뒤로 가기
+    }
+
+    function goToHomePage() {
+        window.location.href = '/'; // 루트 페이지로 이동
+    }
+</script>
+</body>
+</html>
